@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Drawing;
 
 namespace Lab1
 {
@@ -18,7 +20,7 @@ namespace Lab1
         private int sizeX;
         private int sizeY;
 
-        public Perceptron(int sizex, int sizey)
+        public Perceptron(int sizex, int sizey, string per_name)
         {
             weight = new int[sizex, sizey];
             input = new int[sizex, sizey];
@@ -27,37 +29,25 @@ namespace Lab1
             sizeX = sizex;
             sizeY = sizey;
             result = 0;
+            name = per_name;
             return;
         }
 
-        public void mul_w()
+        public void setWeigth(Bitmap map)
         {
-            for (int x = 0; x <= (sizeX - 1); x++)
-            {
-                for (int y = 0; y <= (sizeY - 1); y++)
+            for (int x = 0; x < sizeX; x++)
+                for (int y = 0; y < sizeY; y++)
                 {
-                    scale_signal[x, y] = input[x, y] * weight[x, y];
+                    weight[x, y] = map.GetPixel(x, y).A;
+                    memory[x, y] = map.GetPixel(x, y).A;
                 }
-            }
+            return;
         }
 
-        public void Sum()
+        public string CheckNumber(Bitmap map)
         {
-            sum = 0;
-            for (int x = 0; x <= sizeX; x++)
-            {
-                for (int y = 0; y <= sizeY; y++)
-                {
-                    sum += scale_signal[x, y];
-                }
-            }
-        }
 
-        public bool Cmp()
-        {
-            if (sum >= limit)
-                return true;
-            return false;
         }
+       
     }
 }
