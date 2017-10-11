@@ -16,5 +16,18 @@ namespace Lab1
         {
             InitializeComponent();
         }
+
+        private void btnImageUpload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                // display image in picture box  
+                pbxImage.Image = new Bitmap(open.FileName);
+                label1.Text = pbxImage.Image.Height.ToString() + " " + pbxImage.Image.Width.ToString();
+            }
+        }
     }
 }
