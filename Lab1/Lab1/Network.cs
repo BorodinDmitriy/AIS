@@ -17,5 +17,6 @@ namespace Lab1
                 percept[i] = new Perceptron(sizex, sizey);
             }
         }
+
     }
 }
