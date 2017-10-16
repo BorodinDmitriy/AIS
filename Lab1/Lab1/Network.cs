@@ -10,24 +10,33 @@ namespace Lab1
     class Network
     {
         private Perceptron[] percept;
-        public Network(int sizex, int sizey)
+
+        public Network(int sizex, int sizey, List<Bitmap> weightNeuron)
         {
             percept = new Perceptron[10];
             for (int i = 0; i < 10; i++)
             {
-                percept[i] = new Perceptron(sizex, sizey, i.ToString());
+                percept[i] = new Perceptron(sizex, sizey, i.ToString(), weightNeuron[i]);
             }
         }
 
-        public void SetWeigthToNeuron(Bitmap map, int index)
+        public void SetWeightToNeuron(Bitmap map, int index)
         {
-            percept[index].setWeigth(map);
+            percept[index].setWeight(map);
             return;
         }
 
-        public int CheckNumber(Bitmap map)
+        public int Check(Bitmap number)
         {
-
+            int result = -1;
+            double[] answer = new double[percept.Count()];
+            for (int I = 0; I < percept.Count(); I++)
+            {
+                answer[I] = percept[I].CheckNumber(number);
+            }
+            double item = answer.Max();
+            result = Array.IndexOf(answer, item);
+            return result;
         }
     }
 }
