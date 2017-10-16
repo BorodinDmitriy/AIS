@@ -23,7 +23,7 @@ namespace Lab1
         }
         public void processImage()
         {
-            
+            int number = net.Check(pbxImage.Image);
         }
     }
 }

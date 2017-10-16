@@ -61,6 +61,7 @@
             this.btnRecognize.TabIndex = 2;
             this.btnRecognize.Text = "Распознать";
             this.btnRecognize.UseVisualStyleBackColor = true;
+            this.btnRecognize.Click += new System.EventHandler(this.btnRecognize_Click);
             // 
             // label1
             // 
@@ -82,6 +83,7 @@
             this.Controls.Add(this.pbxImage);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

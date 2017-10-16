@@ -38,5 +38,6 @@ namespace Lab1
             result = Array.IndexOf(answer, item);
             return result;
         }
+
     }
 }
