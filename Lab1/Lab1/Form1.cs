@@ -29,6 +29,8 @@ namespace Lab1
             {
                 // display image in picture box  
                 pbxImage.Image = new Bitmap(open.FileName);
+                label2.Text = open.FileName;
+                label3.Text = 
                 label1.Text = pbxImage.Image.Height.ToString() + " " + pbxImage.Image.Width.ToString();
             }
         }
@@ -38,10 +40,22 @@ namespace Lab1
             int imageSizeX = pbxImage.Image.Width;
             int imageSizeY = pbxImage.Image.Height;
 
-            networkSnippet = new Network(imageSizeX, imageSizeY);
+            List<Bitmap> initBitmaps = new List<Bitmap>();
+            for (int i = 0; i < 10; i++)
+            {
+                initBitmaps.Add(new Bitmap("./../../img/" + i.ToString() + ".bmp"));
+            }
+            networkSnippet = new Network(imageSizeX, imageSizeY, initBitmaps);
+            imageProcessorSnippet = new ImageProcessor(new Bitmap(pbxImage.Image), networkSnippet);
+
+            int number = imageProcessorSnippet.processImage();
+            label3.Text = number.ToString();
+
+
+            /*networkSnippet = new Network(imageSizeX, imageSizeY);
             imageProcessorSnippet = new ImageProcessor((Bitmap)pbxImage.Image.Clone(), networkSnippet);
 
-            //label1.Text = imageProcessorSnippet.Check().ToString();
+            label1.Text = imageProcessorSnippet.Check().ToString();*/
             //int number = networkSnippet.Check(pbxImage.Image);
             //label1.Text = number.ToString();
         }

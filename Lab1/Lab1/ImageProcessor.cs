@@ -16,14 +16,15 @@ namespace Lab1
 
         public ImageProcessor(Bitmap processingImage, Network workingNetwork)
         {
+            image = processingImage;
             sizeX = image.Width;
             sizeY = image.Height;
-            image = processingImage;
             net = workingNetwork;
         }
-        public void processImage()
+        public int processImage()
         {
-            int number = net.Check(pbxImage.Image);
+            int number = net.Check(image);
+            return number;
         }
     }
 }
