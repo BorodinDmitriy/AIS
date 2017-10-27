@@ -14,7 +14,7 @@ namespace Lab1
     {
         Network networkSnippet;
         ImageProcessor imageProcessorSnippet;
-
+        int _LastNumber;
         public Form1()
         {
             InitializeComponent();
@@ -29,26 +29,17 @@ namespace Lab1
             {
                 // display image in picture box  
                 pbxImage.Image = new Bitmap(open.FileName);
-                label2.Text = open.FileName;
-                label3.Text = 
+                label3.Text = "";
                 label1.Text = pbxImage.Image.Height.ToString() + " " + pbxImage.Image.Width.ToString();
             }
         }
 
         private void btnRecognize_Click(object sender, EventArgs e)
         {
-            int imageSizeX = pbxImage.Image.Width;
-            int imageSizeY = pbxImage.Image.Height;
-
-            List<Bitmap> initBitmaps = new List<Bitmap>();
-            for (int i = 0; i < 10; i++)
-            {
-                initBitmaps.Add(new Bitmap("./../../img/" + i.ToString() + ".bmp"));
-            }
-            networkSnippet = new Network(imageSizeX, imageSizeY, initBitmaps);
-            imageProcessorSnippet = new ImageProcessor(new Bitmap(pbxImage.Image), networkSnippet);
-
+            Bitmap map = new Bitmap(pbxImage.Image);
+            imageProcessorSnippet.SetImage(map);
             int number = imageProcessorSnippet.processImage();
+            this._LastNumber = number;
             label3.Text = number.ToString();
 
 
@@ -62,7 +53,23 @@ namespace Lab1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            List<Bitmap> initBitmaps = new List<Bitmap>();
+            for (int i = 0; i < 10; i++)
+            {
+                initBitmaps.Add(new Bitmap("./../../min_img/" + i.ToString() + ".jpg"));
+            }
+            networkSnippet = new Network(initBitmaps[0].Width, initBitmaps[0].Height, initBitmaps);
+            imageProcessorSnippet = new ImageProcessor(networkSnippet);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.networkSnippet.CorrectAnswer(this._LastNumber);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.networkSnippet.IncorrectAnswer(this._LastNumber);
         }
     }
 }
