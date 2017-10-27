@@ -14,12 +14,17 @@ namespace Lab1
         private Bitmap image;
         private Network net;
 
-        public ImageProcessor(Bitmap processingImage, Network workingNetwork)
+        public ImageProcessor(Network workingNetwork)
         {
-            image = processingImage;
+            net = workingNetwork;
+        }
+
+        public void SetImage(Bitmap pic)
+        {
+            image = pic;
             sizeX = image.Width;
             sizeY = image.Height;
-            net = workingNetwork;
+            return;
         }
         public int processImage()
         {
