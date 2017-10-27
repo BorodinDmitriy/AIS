@@ -20,10 +20,14 @@ namespace Lab1
             }
         }
 
-        public void SetWeightToNeuron(Bitmap map, int index)
+        public void CorrectAnswer(int index)
         {
-            percept[index].setWeight(map);
-            return;
+            percept[index].CorrectAnswer();
+        }
+
+        public void IncorrectAnswer(int index)
+        {
+            percept[index].IncorrectAnswer();
         }
 
         public int Check(Bitmap number)
