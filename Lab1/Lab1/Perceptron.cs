@@ -10,75 +10,102 @@ namespace Lab1
 {
     class Perceptron
     {
-        public string name;
-        public int[,] scale_signal;
-        public int[,] weight;
-        public int[,] input;
-        public int[,] memory;
-        public double result;
-        public int sum;
-        private int sizeX;
-        private int sizeY;
-        private int limit = 125;
-        public Perceptron(int sizex, int sizey, string per_name, Bitmap new_weight)
+        private string      _PerceptronName;
+        private int         _MapSizeX;
+        private int         _MapSizeY;
+        private double[,]   _MemoryWeight;
+        private double[,]   _MemoryIntensity;
+        private double      _Limit = 75;
+        private double[,]   _LastInput;
+
+        private double getIntensity(Color rgb)
         {
-            sizeX   = sizex;
-            sizeY   = sizey;
-            weight  = new int[sizex, sizey];
-            memory  = new int[sizex, sizey];
-            for (int x = 0; x < new_weight.Size.Width; x++)
-            {
-                for (int y = 0; y < new_weight.Size.Height; y++)
-                {
-                    var temp = new_weight.GetPixel(x, y);
-                    weight[x, y] = new_weight.GetPixel(x, y).A;
-                    memory[x, y] = new_weight.GetPixel(x, y).A;
-                }
-            }
-            input = new int[sizex, sizey];
-            scale_signal = new int[sizex, sizey];
-            result = 0;
-            name = per_name;
-            return;
+            double res;
+            res = (rgb.B + rgb.G + rgb.R) / 3.0;
+            return res;
         }
 
-        public void setWeight(Bitmap map)
+        public string Name
         {
-            for (int x = 0; x < sizeX; x++)
-                for (int y = 0; y < sizeY; y++)
+            get { return _PerceptronName; }
+            set { _PerceptronName = value; }
+        }
+
+        public void CorrectAnswer()
+        {
+            for (int X = 0; X < _MapSizeX; X++)
+                for (int Y = 0; Y < _MapSizeY; Y++)
                 {
-                    weight[x, y] = map.GetPixel(x, y).A;
-                    memory[x, y] = map.GetPixel(x, y).A;
+                    // необходимо увеличить вес пропорционально весу 
+                    this._MemoryWeight[X, Y] = Math.Min(255.0, (this._MemoryWeight[X, Y] + (Math.Abs(_LastInput[X, Y]-this._MemoryWeight[X,Y]) / this._MemoryWeight[X, Y])));
                 }
+        }
+
+        public void IncorrectAnswer()
+        {
+            for (int X = 0; X < _MapSizeX; X++)
+                for (int Y = 0; Y < _MapSizeY; Y++)
+                {
+                    // необходимо увеличить вес пропорционально весу 
+                    this._MemoryWeight[X, Y] = Math.Min(255.0, (this._MemoryWeight[X, Y] - (_LastInput[X, Y]/ this._MemoryWeight[X, Y])));
+                }
+        }
+
+        public Perceptron(int sizex, int sizey, string per_name, Bitmap learning_picture)
+        {
+            this._MapSizeX = sizex;
+            this._MapSizeY = sizey;
+            this._MemoryWeight  = new double[_MapSizeX, _MapSizeY];
+            this._MemoryIntensity = new double[_MapSizeX, _MapSizeY];
+            this._LastInput = new double[_MapSizeX, _MapSizeY];
+            double tempIntensity;
+            for (int x = 0; x < learning_picture.Size.Width; x++)
+            {
+                for (int y = 0; y < learning_picture.Size.Height; y++)
+                {
+                    tempIntensity = getIntensity(learning_picture.GetPixel(x, y));
+                    this._MemoryIntensity[x, y] = tempIntensity;
+                    this._MemoryWeight[x, y] = (byte.MaxValue - tempIntensity);
+                }
+            }
+            this.Name = per_name;
             return;
         }
 
         public double CheckNumber(Bitmap map)
         {
             double result = 0;
-            int alpha_map;
-            int weight_for_check = 0;
-            for (int x = 0; x < sizeX; x++)
+            double intensityMapPixel;
+            double weightToMapPixel;
+            double countPossiblePixelApproximation = 0;
+            for (int X = 0; X < _MapSizeX; X++)
             {
-                for (int y = 0; y < sizeY; y++)
+                for (int Y = 0; Y < _MapSizeY; Y++)
                 {
-                    alpha_map = map.GetPixel(x, y).A;
-                    if (Math.Abs(alpha_map - memory[x, y]) < limit)
+                    intensityMapPixel = getIntensity(map.GetPixel(X, Y));
+                    weightToMapPixel = byte.MaxValue - intensityMapPixel;
+                    _LastInput[X, Y] = weightToMapPixel;
+                    // Сравнение интенсивности в памяти перцептрона с текущим изображением
+                    if (Math.Abs(intensityMapPixel - this._MemoryIntensity[X, Y]) > _Limit)
                     {
-                        if (alpha_map < 250)
-                            weight_for_check++;
+                        // Если разница больше лимита, значит пиксель не удовлит. входящему изображению
+                        continue;
                     }
-                    if (alpha_map != 0)
+                    else
                     {
-                        if(alpha_map < 250)
-                            memory[x, y] = Convert.ToInt32(Math.Round((memory[x, y] + (memory[x, y] + alpha_map) / 2.0) / (2.0)));
-                        else if (memory[x,y] != 0)
-                            if(alpha_map < 250)
-                                memory[x, y] = Convert.ToInt32(Math.Round((memory[x, y] + (memory[x, y] + alpha_map) / 2.0) / (2.0)));
+                        // Если разница не велика, то рассматриваем приближенность интенсивностей
+                        // Если интенсивности эквивалентны белому цвету, продолжить просмотр
+                        if (intensityMapPixel >= 250.0)
+                            continue;
+                        else
+                        {
+                            countPossiblePixelApproximation += (this._MemoryWeight[X, Y] * weightToMapPixel)/ 255.0;
+                        }
                     }
                 }
             }
-            result = weight_for_check;
+            //  Отношение возможно приближенных ко всем пикселям изображения
+            result = countPossiblePixelApproximation;
             return result;
         }
        
