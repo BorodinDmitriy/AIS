@@ -135,27 +135,21 @@ namespace Pavel
         }
         private void CarPerceptInit_1()
         {
-            FuzzificationCarSpendPercept item = new FuzzificationCarSpendPercept(8, 10);
+            FuzzificationCarSpendPercept item = new FuzzificationCarSpendPercept(500, 500);
             CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(132, 12736);
+            item = new FuzzificationCarSpendPercept(5000, 500);
             CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(1, 4);
+            item = new FuzzificationCarSpendPercept(10000, 500);
             CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(6, 9);
+            item = new FuzzificationCarSpendPercept(20000, 500);
             CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(3, 7);
+            item = new FuzzificationCarSpendPercept(30000, 500);
             CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(9, 13);
+            item = new FuzzificationCarSpendPercept(40000, 500);
             CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(12, 1);
+            item = new FuzzificationCarSpendPercept(50000, 500);
             CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(23, 1.01);
-            CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(0.34, 1.330);
-            CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(0.3, 1.230);
-            CarPercept.Add(item);
-            item = new FuzzificationCarSpendPercept(138, 10342);
+            item = new FuzzificationCarSpendPercept(100000, 1500);
             CarPercept.Add(item);
         }
 
