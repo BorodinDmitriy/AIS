@@ -9,6 +9,13 @@ namespace Pavel
     class Network
     {
         private List<FuzzificationIncomePercept> IncomePecept;
-        private List<Fuzzification>
+        private List<FuzzificationSpendPercept> SpendPercept;
+        private List<KnowledgePercept> Knowledge;
+        private List<DefuzzificationPercept> DefuzPercept;
+
+        Network()
+        {
+
+        }
     }
 }
