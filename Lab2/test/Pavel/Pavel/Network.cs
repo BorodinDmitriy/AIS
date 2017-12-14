@@ -81,7 +81,10 @@ namespace Pavel
         }
         private void KnowledgeInit1()
         {
-            
+            KnowledgePercept item = new KnowledgePercept(0, Math.Max, 0.1, 0.3, 0.11);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(0, KnowledgePercept.And, 0.1, 0.3, 0.11);
+            Knowledge.Add(item);
         }
         private void KnowledgeInit2()
         {
@@ -97,6 +100,10 @@ namespace Pavel
         }
         public Network()
         {
+            IncomePecept = new List<FuzzificationIncomePercept>();
+            SpendPercept = new List<FuzzificationSpendPercept>();
+            Knowledge = new List<KnowledgePercept>();
+            DefuzPercept = new List<DefuzzificationPercept>();
             IncomePerceptInit_1();
             //IncomePerceptInit_2();
             SpendPerceptInit_1();
@@ -109,10 +116,10 @@ namespace Pavel
 
         public double findSolution(double income, double spend)
         {
-            double res = 0;
-            List<double> x;
-            List<double> y;
-            List<double> u;
+            double res = 0;/*
+            List<double> x = new List<double>();
+            List<double> y = new List<double>();
+            List<double> u = new List<double>();
             for (int I = 0; I < IncomePecept.Count; I++)
             {
                 x.Add(IncomePecept[I].Transform(income));
@@ -127,7 +134,7 @@ namespace Pavel
                     u.Add(Knowledge.checkRule(x, y));
                 }
             for (int J = 0; J < DefuzPercept.Count; J++)
-                res += DefuzPercept[J].Transform(u);
+                res += DefuzPercept[J].Transform(u);*/
             return res;
         }
     }

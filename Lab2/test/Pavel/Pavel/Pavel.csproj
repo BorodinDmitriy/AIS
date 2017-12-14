@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefuzzificationPercept.cs" />
+    <Compile Include="FuzzificationIncomePercept.cs" />
+    <Compile Include="FuzzificationSpendPercept.cs" />
+    <Compile Include="KnowledgePercept.cs" />
     <Compile Include="Network.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

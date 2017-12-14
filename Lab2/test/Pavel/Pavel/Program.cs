@@ -11,7 +11,9 @@ namespace Pavel
         static void Main(string[] args)
         {
             Network test = new Network();
-            test.findSolution(10, 20);
+            Console.WriteLine();
+            Console.ReadKey();
+            //test.findSolution(10, 20);
         }
     }
 }
