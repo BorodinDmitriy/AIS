@@ -18,7 +18,7 @@ namespace Pavel
         {
             return Math.Max(x, y);
         }
-        public KnowledgePercept(double val, operationByRules method, double min, double max, double peak)
+        public KnowledgePercept(double val, operationByRules method, operationByRules method2, double min, double max, double peak)
         {
 
         }

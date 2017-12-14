@@ -10,8 +10,9 @@ namespace Pavel
     {
         private List<FuzzificationIncomePercept> IncomePecept;
         private List<FuzzificationSpendPercept> SpendPercept;
+        private List<FuzzificationCarSpendPercept> CarPercept;
         private List<KnowledgePercept> Knowledge;
-        private List<DefuzzificationPercept> DefuzPercept;
+        private DefuzzificationPercept DefuzPercept;
 
         private void IncomePerceptInit_1()
         {
@@ -81,18 +82,56 @@ namespace Pavel
         }
         private void KnowledgeInit1()
         {
-            KnowledgePercept item = new KnowledgePercept(0, Math.Max, 0.1, 0.3, 0.11);
+            KnowledgePercept item = new KnowledgePercept(0, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.3, 0.11);
             Knowledge.Add(item);
-            item = new KnowledgePercept(0, KnowledgePercept.And, 0.1, 0.3, 0.11);
+            item = new KnowledgePercept(0.5, KnowledgePercept.And, KnowledgePercept.And, 0.4, 0.8, 0.6);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(12, KnowledgePercept.Or, KnowledgePercept.And, 0.6, 1, 0.9);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(45, KnowledgePercept.And, KnowledgePercept.Or, 0.1, 0.2, 0.19);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(123, KnowledgePercept.And, KnowledgePercept.And, 0.1, 0.8, 0.3);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(23423, KnowledgePercept.Or, KnowledgePercept.Or, 0.1, 0.3, 0.11);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(1238734, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.3, 0.11);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(9232, KnowledgePercept.And, KnowledgePercept.Or, 0.321, 0.652, 0.36);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(87123, KnowledgePercept.Or, KnowledgePercept.And, 0.8, 1, 1);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(127321, KnowledgePercept.And, KnowledgePercept.Or, 0, 1, 0);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(123873912, KnowledgePercept.Or, KnowledgePercept.Or, 0, 1, 1);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(26374862384, KnowledgePercept.And, KnowledgePercept.Or, 0.1, 0.365, 0.21);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(902193, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.7, 0.41);
             Knowledge.Add(item);
         }
         private void KnowledgeInit2()
         {
-
+            KnowledgePercept item = new KnowledgePercept(0, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.3, 0.11);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(0.5, KnowledgePercept.And, KnowledgePercept.And, 0.4, 0.8, 0.6);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(12, KnowledgePercept.Or, KnowledgePercept.And, 0.6, 1, 0.9);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(45, KnowledgePercept.And, KnowledgePercept.Or, 0.1, 0.2, 0.19);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(123, KnowledgePercept.And, KnowledgePercept.And, 0.1, 0.8, 0.3);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(23423, KnowledgePercept.Or, KnowledgePercept.Or, 0.1, 0.3, 0.11);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(1238734, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.3, 0.11);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(9232, KnowledgePercept.And, KnowledgePercept.Or, 0.321, 0.652, 0.36);
+            Knowledge.Add(item);
+            item = new KnowledgePercept(87123, KnowledgePercept.Or, KnowledgePercept.And, 0.8, 1, 1);
         }
-        private void DefuzzificationInit1()
+        private void DefuzzificationInit()
         {
-
+            DefuzPercept = new DefuzzificationPercept();
         }
         private void DefuzzificationInit2()
         {
@@ -102,19 +141,18 @@ namespace Pavel
         {
             IncomePecept = new List<FuzzificationIncomePercept>();
             SpendPercept = new List<FuzzificationSpendPercept>();
+            CarPercept = new List<FuzzificationCarSpendPercept>();
             Knowledge = new List<KnowledgePercept>();
-            DefuzPercept = new List<DefuzzificationPercept>();
             IncomePerceptInit_1();
             //IncomePerceptInit_2();
             SpendPerceptInit_1();
             //SpendPerceptInit_2();
             KnowledgeInit1();
             //KnowledgeInit2();
-            DefuzzificationInit1();
-            //DefuzzificationInit2();
+            DefuzzificationInit();
         }
 
-        public double findSolution(double income, double spend)
+        public double findSolution(double income, double spend, double spendToCar)
         {
             double res = 0;/*
             List<double> x = new List<double>();
