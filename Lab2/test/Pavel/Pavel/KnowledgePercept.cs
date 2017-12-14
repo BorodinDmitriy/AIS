@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Pavel
 {
-    class KnowledgePercept
+    public delegate double operationByRules(double x, double y);
+    public class KnowledgePercept
     {
+        public KnowledgePercept(double val, operationByRules method, double min, double max, double peak)
+        {
+
+        }
     }
 }

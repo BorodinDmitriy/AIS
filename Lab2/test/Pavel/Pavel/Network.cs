@@ -81,7 +81,7 @@ namespace Pavel
         }
         private void KnowledgeInit1()
         {
-
+            
         }
         private void KnowledgeInit2()
         {

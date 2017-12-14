@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Pavel
 {
-    class FuzzificationSpendPercept
+    public class FuzzificationSpendPercept
     {
+        public FuzzificationSpendPercept(double min, double max)
+        {
+
+        }
     }
 }

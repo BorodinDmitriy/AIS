@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Pavel
 {
-    class FuzzificationIncomePercept
+    public class FuzzificationIncomePercept
     {
+        
+        public FuzzificationIncomePercept(double min, double max, double step)
+        {
+
+        }
     }
 }
