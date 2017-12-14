@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="DefuzzificationPercept.cs" />
     <Compile Include="Functions.cs" />
+    <Compile Include="FuzzificationCarSpendPercept.cs" />
     <Compile Include="FuzzificationIncomePercept.cs" />
     <Compile Include="FuzzificationSpendPercept.cs" />
     <Compile Include="KnowledgePercept.cs" />

@@ -82,52 +82,51 @@ namespace Pavel
         }
         private void KnowledgeInit1()
         {
-            KnowledgePercept item = new KnowledgePercept(0, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.3, 0.11);
+            KnowledgePercept item = new KnowledgePercept(0.1, 0.3, 0.11, KnowledgePercept.Or, KnowledgePercept.And, KnowledgePercept.And);
             Knowledge.Add(item);
-            item = new KnowledgePercept(0.5, KnowledgePercept.And, KnowledgePercept.And, 0.4, 0.8, 0.6);
+            item = new KnowledgePercept(0.4, 0.8, 0.6, KnowledgePercept.Or, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(12, KnowledgePercept.Or, KnowledgePercept.And, 0.6, 1, 0.9);
+            item = new KnowledgePercept(0.6, 1, 0.9, KnowledgePercept.And, KnowledgePercept.And, KnowledgePercept.And);
             Knowledge.Add(item);
-            item = new KnowledgePercept(45, KnowledgePercept.And, KnowledgePercept.Or, 0.1, 0.2, 0.19);
+            item = new KnowledgePercept(0.1, 0.2, 0.19,KnowledgePercept.Or, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(123, KnowledgePercept.And, KnowledgePercept.And, 0.1, 0.8, 0.3);
+            item = new KnowledgePercept(0.1, 0.8, 0.3, KnowledgePercept.And, KnowledgePercept.Or, KnowledgePercept.And);
             Knowledge.Add(item);
-            item = new KnowledgePercept(23423, KnowledgePercept.Or, KnowledgePercept.Or, 0.1, 0.3, 0.11);
+            item = new KnowledgePercept(0.1, 0.3, 0.11, KnowledgePercept.Or, KnowledgePercept.And, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(1238734, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.3, 0.11);
+            item = new KnowledgePercept(0.1, 0.6546, 0.11, KnowledgePercept.Or, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(9232, KnowledgePercept.And, KnowledgePercept.Or, 0.321, 0.652, 0.36);
+            item = new KnowledgePercept(0.321, 0.652, 0.36, KnowledgePercept.And, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(87123, KnowledgePercept.Or, KnowledgePercept.And, 0.8, 1, 1);
+            item = new KnowledgePercept(0.8, 1, 1, KnowledgePercept.Or, KnowledgePercept.And, KnowledgePercept.And);
             Knowledge.Add(item);
-            item = new KnowledgePercept(127321, KnowledgePercept.And, KnowledgePercept.Or, 0, 1, 0);
+            item = new KnowledgePercept(0, 1, 0, KnowledgePercept.Or, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(123873912, KnowledgePercept.Or, KnowledgePercept.Or, 0, 1, 1);
+            item = new KnowledgePercept(0, 1, 1, KnowledgePercept.Or, KnowledgePercept.And, KnowledgePercept.And);
             Knowledge.Add(item);
-            item = new KnowledgePercept(26374862384, KnowledgePercept.And, KnowledgePercept.Or, 0.1, 0.365, 0.21);
+            item = new KnowledgePercept(0.1, 0.365, 0.21, KnowledgePercept.And, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(902193, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.7, 0.41);
+            item = new KnowledgePercept(0.1, 0.7, 0.41, KnowledgePercept.Or, KnowledgePercept.And, KnowledgePercept.And);
             Knowledge.Add(item);
         }
         private void KnowledgeInit2()
         {
-            KnowledgePercept item = new KnowledgePercept(0, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.3, 0.11);
+            KnowledgePercept item = new KnowledgePercept(0.1, 0.3, 0.11, KnowledgePercept.Or, KnowledgePercept.And, KnowledgePercept.And);
             Knowledge.Add(item);
-            item = new KnowledgePercept(0.5, KnowledgePercept.And, KnowledgePercept.And, 0.4, 0.8, 0.6);
+            item = new KnowledgePercept(0.4, 0.8, 0.6, KnowledgePercept.Or, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(12, KnowledgePercept.Or, KnowledgePercept.And, 0.6, 1, 0.9);
+            item = new KnowledgePercept(0.6, 1, 0.9, KnowledgePercept.And, KnowledgePercept.And, KnowledgePercept.And);
             Knowledge.Add(item);
-            item = new KnowledgePercept(45, KnowledgePercept.And, KnowledgePercept.Or, 0.1, 0.2, 0.19);
+            item = new KnowledgePercept(0.1, 0.2, 0.19, KnowledgePercept.Or, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(123, KnowledgePercept.And, KnowledgePercept.And, 0.1, 0.8, 0.3);
+            item = new KnowledgePercept(0.1, 0.6546, 0.11, KnowledgePercept.Or, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(23423, KnowledgePercept.Or, KnowledgePercept.Or, 0.1, 0.3, 0.11);
+            item = new KnowledgePercept(0.321, 0.652, 0.36, KnowledgePercept.And, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(1238734, KnowledgePercept.Or, KnowledgePercept.And, 0.1, 0.3, 0.11);
+            item = new KnowledgePercept(0.8, 1, 1, KnowledgePercept.Or, KnowledgePercept.And, KnowledgePercept.And);
             Knowledge.Add(item);
-            item = new KnowledgePercept(9232, KnowledgePercept.And, KnowledgePercept.Or, 0.321, 0.652, 0.36);
+            item = new KnowledgePercept(0, 1, 0, KnowledgePercept.Or, KnowledgePercept.Or, KnowledgePercept.Or);
             Knowledge.Add(item);
-            item = new KnowledgePercept(87123, KnowledgePercept.Or, KnowledgePercept.And, 0.8, 1, 1);
         }
         private void DefuzzificationInit()
         {
@@ -203,14 +202,19 @@ namespace Pavel
             for (int I = 0; I < CarPercept.Count; I++)
             {
                 z.Add(CarPercept[I].Transform(spendToCar));
-                Console.WriteLine(z[z.Count - 1]);
             }
-            /*for (int I = 0; I < x.Count; I++)
-                for(int J = 0; J < y.Count; J++)
+            for (int E = 0; E < Knowledge.Count; E++)
+                for (int I = 0; I < x.Count; I++)
                 {
-                    u.Add(Knowledge.checkRule(x, y));
+                    for (int J = 0; J < y.Count; J++)
+                    {
+                        for (int T = 0; T < z.Count; T++)
+                        {
+                            u.Add(Knowledge[E].checkRule(x[I], y[J], z[T]));
+                        }
+                    }
                 }
-            for (int J = 0; J < DefuzPercept.Count; J++)
+            /*for (int J = 0; J < DefuzPercept.Count; J++)
                 res += DefuzPercept[J].Transform(u);*/
             return res;
         }
