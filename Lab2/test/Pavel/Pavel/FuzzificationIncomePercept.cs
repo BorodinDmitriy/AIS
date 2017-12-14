@@ -58,32 +58,23 @@ namespace Pavel
             if (x >= _highMaxLim && x <= _lowMaxLim)
                 intervalCase = 3;
 
-            if (intervalCase > 0)
+            double res = 0;
+            switch (intervalCase)
             {
-                double res = 0;
-                switch (intervalCase)
-                {
-                    case 1:
-                        res = 1 - ((_highMinLim - x) / (_highMinLim - _lowMinLim));
-                        break;
+                case 1:
+                    res = 1 - ((_highMinLim - x) / (_highMinLim - _lowMinLim));
+                    break;
 
-                    case 2:
-                        res = 1;
-                        break;
+                case 2:
+                    res = 1;
+                    break;
 
-                    case 3:
-                        res = 1 - ((x - _highMaxLim) / (_lowMaxLim - _highMaxLim));
-                        break;
-
-                    default:
-                        res = double.NaN;
-                        break;
-                }
-
-                return res;
+                case 3:
+                    res = 1 - ((x - _highMaxLim) / (_lowMaxLim - _highMaxLim));
+                    break;
             }
-            else
-                return double.NaN;
+
+            return res;
         }
     }
 }
