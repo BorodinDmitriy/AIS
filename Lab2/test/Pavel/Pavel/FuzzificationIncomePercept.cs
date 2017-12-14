@@ -16,25 +16,25 @@ namespace Pavel
         public double lowMinLim
         {
             get { return _lowMinLim; }
-            set { _lowMinLim = lowMinLim; }
+            set { _lowMinLim = value; }
         }
 
         public double highMinLim
         {
             get { return _highMinLim; }
-            set { _highMinLim = highMinLim; }
+            set { _highMinLim = value; }
         }
 
         public double lowMaxLim
         {
             get { return _lowMaxLim; }
-            set { _lowMaxLim = lowMaxLim; }
+            set { _lowMaxLim = value; }
         }
 
         public double highMaxLim
         {
             get { return _highMaxLim; }
-            set { _highMaxLim = highMaxLim; }    
+            set { _highMaxLim = value; }    
         }
         
         public FuzzificationIncomePercept(double min, double max, double step)

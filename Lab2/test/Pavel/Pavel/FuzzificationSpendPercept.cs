@@ -15,19 +15,19 @@ namespace Pavel
         public double minLim
         {
             get { return _minLim; }
-            set { _minLim = minLim; }
+            set { _minLim = value; }
         }
 
         public double maxLim
         {
             get { return _maxLim; }
-            set { _maxLim = maxLim; }
+            set { _maxLim = value; }
         }
 
         public double peak
         {
             get { return _peak; }
-            set { _peak = peak; }
+            set { _peak = value; }
         }
 
         public FuzzificationSpendPercept(double min, double max)
