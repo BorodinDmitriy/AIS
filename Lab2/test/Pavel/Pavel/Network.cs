@@ -133,9 +133,46 @@ namespace Pavel
         {
             DefuzPercept = new DefuzzificationPercept();
         }
-        private void DefuzzificationInit2()
+        private void CarPerceptInit_1()
         {
+            FuzzificationCarSpendPercept item = new FuzzificationCarSpendPercept(8, 10);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(132, 12736);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(1, 4);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(6, 9);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(3, 7);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(9, 13);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(12, 1);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(23, 1.01);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(0.34, 1.330);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(0.3, 1.230);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(138, 10342);
+            CarPercept.Add(item);
+        }
 
+        private void CarPerceptInit_2()
+        {
+            FuzzificationCarSpendPercept item = new FuzzificationCarSpendPercept(8, 10);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(132, 12736);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(1, 4);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(6, 9);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(3, 7);
+            CarPercept.Add(item);
+            item = new FuzzificationCarSpendPercept(9, 13);
+            CarPercept.Add(item);
         }
         public Network()
         {
@@ -147,6 +184,8 @@ namespace Pavel
             //IncomePerceptInit_2();
             SpendPerceptInit_1();
             //SpendPerceptInit_2();
+            CarPerceptInit_1();
+            //CarPerceptInit_2();
             KnowledgeInit1();
             //KnowledgeInit2();
             DefuzzificationInit();
@@ -154,9 +193,10 @@ namespace Pavel
 
         public double findSolution(double income, double spend, double spendToCar)
         {
-            double res = 0;/*
+            double res = 0;
             List<double> x = new List<double>();
             List<double> y = new List<double>();
+            List<double> z = new List<double>();
             List<double> u = new List<double>();
             for (int I = 0; I < IncomePecept.Count; I++)
             {
@@ -166,7 +206,12 @@ namespace Pavel
             {
                 y.Add(SpendPercept[J].Transform(spend));
             }
-            for (int I = 0; I < x.Count; I++)
+            for (int I = 0; I < CarPercept.Count; I++)
+            {
+                z.Add(CarPercept[I].Transform(spendToCar));
+                Console.WriteLine(z[z.Count - 1]);
+            }
+            /*for (int I = 0; I < x.Count; I++)
                 for(int J = 0; J < y.Count; J++)
                 {
                     u.Add(Knowledge.checkRule(x, y));
