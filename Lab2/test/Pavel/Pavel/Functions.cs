@@ -8,27 +8,34 @@ namespace Pavel
 {
     public class Functions
     {
-        Random randObj;
         double val;
         public Functions(double value)
         {
-            randObj = new Random();
+            
             val = value;
         }
 
         public double budgetFunction(double x)
         {
-            return Math.Pow(val * randObj.NextDouble(), 1.1) * x + Math.Pow(Math.Sin(x), 7); 
+            Random randObj = new Random(Convert.ToInt32(val));
+            return randObj.NextDouble() * x; 
         }
 
         public double flatFunction(double y)
         {
-            return Math.Pow(Math.Sqrt(val) * randObj.NextDouble(), 0.32) * y;
+            Random a = new Random(Convert.ToInt32(Math.Sqrt(val)));
+            return a.NextDouble() * y;
         }
 
         public double transportFunction(double z)
         {
-            return Math.Pow(Math.Sqrt(val) * randObj.NextDouble(), 0.05) * Math.Pow(z,1.04);
+            Random a = new Random(Convert.ToInt32(Math.Log10(val)));
+            return a.NextDouble() * z;
+        }
+
+        public double u(double x, double y, double z)
+        {
+            return Math.Log10(Math.Sin(x) + Math.Pow(y, 0.33) + Math.Log(z));
         }
     }
 }
