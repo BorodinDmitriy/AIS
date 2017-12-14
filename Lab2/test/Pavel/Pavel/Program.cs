@@ -10,9 +10,24 @@ namespace Pavel
     {
         static void Main(string[] args)
         {
+            double budget = 0;
+            double houseSpend = 0;
+            double carSpend = 0;
+
+            Console.WriteLine("Введите Бюджет:");
+            budget = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Введите расходы на Квартиру:");
+            houseSpend = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Введите расходы на Машину:");
+            carSpend = Convert.ToDouble(Console.ReadLine());
+
+
             Network test = new Network();
-            test.findSolution(10, 20, 30);
-            Console.WriteLine();
+            Console.WriteLine("Расходы на Еду составляют:");
+            Console.WriteLine(test.findSolution(budget, houseSpend, carSpend));
+
             Console.ReadKey();
         }
     }
